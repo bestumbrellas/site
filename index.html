@@ -6,9 +6,17 @@
     <title>Жіноча парасолька-автомат</title>
     <!-- Захист від копіювання, правого кліка та відкриття коду -->
     <script>
+        // Повна заборона контекстного меню (правої кнопки миші) по всій сторінці
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
+            return false;
         });
+
+        // Заборона копіювання тексту, виділення та перетягування
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+
+        // Блокування клавіш розробника (F12, Ctrl+U, Ctrl+Shift+I тощо)
         document.addEventListener('keydown', function(e) {
             if (e.keyCode === 123 || 
                 (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
